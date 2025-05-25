@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Sky Tavern & Gaming - Business Plan</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff; 
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(22, 33, 62, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #00d4ff; 
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 15px;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        section {
+            min-height: 80vh; 
+            display: flex;
+            align-items: center;
+            padding: 120px 20px 60px; 
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        section:first-of-type { 
+             min-height: 100vh;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .container {
+            max-width: 1000px; 
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.15); 
+            border-radius: 15px;
+            padding: 30px 40px; 
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25); 
+        }
+
+        section#intro { 
+             background: #0d1b2a;
+        }
+        section#intro .container {
+            background: #102a3a;
+            border: 1px solid #1a3f52;
+            backdrop-filter: none;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3); 
+        }
+
+        section#intro .container h1 {
+            color: #00D4FF;
+            font-size: 3rem;
+            text-shadow: none;
+            border-bottom: 2px solid #00D4FF;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        section#intro .container p {
+            color: #FFFFFF;
+            font-size: 1.2rem;
+        }
+        
+        h1, h2 {
+            font-size: 2.2rem; 
+            margin-bottom: 25px;
+            color: #00d4ff;
+            border-bottom: 2px solid #00a2cc;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: #79e0ff; 
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p, li { 
+            line-height: 1.7; 
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        ul {
+            list-style-type: none;
+            margin-bottom: 25px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        ul li:before {
+            content: "•";
+            color: #00d4ff;
+            position: absolute;
+            left: 0;
+        }
+
+        strong {
+            color: #00d4ff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        th {
+            background-color: rgba(0, 212, 255, 0.15); 
+            color: #fff;
+        }
+
+        td ul { margin-bottom: 0; padding-left: 15px; background-color: transparent;}
+        td ul li { border-left: none; padding-left: 5px; background-color: transparent; margin-bottom: 5px; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); } 
+            100% { transform: translateY(0px); }
+        }
+
+        .chart-container {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1); 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Big Sky T&G</div>
+            <div class="nav-links">
+                <a href="#intro">Home</a>
+                <a href="#executive-summary">Executive Summary</a>
+                <a href="#business-description">Business</a>
+                <a href="#market-analysis">Market</a>
+                <a href="#marketing-strategy">Marketing</a>
+                <a href="#operations-plan">Operations</a>
+                <a href="#management-team">Team</a>
+                <a href="#licensing">Licensing</a>
+                <a href="#facility-setup">Facility</a>
+                <a href="#operational-setup">Setup</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="intro">
+        <div class="container">
+            <h1 class="floating-element">Big Sky Tavern & Gaming</h1>
+            <p>A premium bar and gaming establishment in Missoula, Montana, combining craft cocktails, local beers, and sophisticated video gaming entertainment.</p>
+            <p>Experience the spirit of Montana with a modern twist.</p>
+        </div>
+    </section>
+
+    <section id="executive-summary">
+        <div class="container">
+            <h2>Executive Summary</h2>
+            <h3>Business Concept</h3>
+            <p>Big Sky Tavern & Gaming is a premium bar and gaming establishment planned for Missoula, Montana. We aim to merge the allure of craft cocktails and a curated local beer selection with the excitement of video poker and slot machine entertainment. Our venue will cultivate a sophisticated yet welcoming atmosphere, designed to appeal to both Missoula locals and the influx of tourists seeking quality drinks and responsible gaming.</p>
+            
+            <h3>Market Opportunity</h3>
+            <p>The target demographic includes local residents aged 25-65 with disposable income, tourists drawn to Montana's natural attractions (12.5 million annually), and business travelers. Montana's consistent population growth and thriving tourism sector signal a significant opportunity for a unique, high-quality gaming and hospitality venue.</p>
+            
+            <h3>Financial Projections Summary</h3>
+            <ul>
+                <li><strong>Total initial investment:</strong> $1,100,000</li>
+                <li><strong>Projected Year 1 revenue:</strong> $1,425,000</li>
+                <li><strong>Projected Year 3 revenue:</strong> $2,100,000</li>
+                <li><strong>Expected ROI:</strong> 35% by Year 3</li>
+                <li><strong>Break-even point:</strong> Month 14</li>
+            </ul>
+            <div class="chart-container">
+                <canvas id="financialProjectionsChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section id="business-description">
+        <div class="container">
+            <h2>Business Description</h2>
+            <h3>Detailed Concept Description</h3>
+            <p>Big Sky Tavern & Gaming will embody a modern Montana lodge aesthetic. This design will feature exposed timber, natural stone accents, and curated local artwork, creating an authentic yet contemporary ambiance. The venue is planned to accommodate 120 patrons, with a distinct, comfortable gaming area housing 20 machines. To maximize revenue potential and cater to varied schedules, operating hours will be 8 AM to 2 AM daily. Entertainment offerings will include live acoustic music on weekends, engaging trivia nights, and popular sports viewing events.</p>
+
+            <h3>Type of Gambling/Gaming Offerings</h3>
+            <p>We will feature 20 video poker/slot machines, the maximum allowed under Montana law. This dedicated gaming zone will prioritize player comfort with premium seating, and will be enhanced by progressive jackpots and a comprehensive player rewards program to encourage loyalty and repeat visits.</p>
+
+            <h3>Additional Amenities</h3>
+            <ul>
+                <li><strong>Beverages:</strong> An extensive selection of craft cocktails using premium spirits, 20 rotating taps spotlighting Montana's best breweries, and a carefully chosen wine list with a focus on regional options.</li>
+                <li><strong>Food:</strong> A full bar food menu featuring high-quality dishes, with ingredients sourced from local Montana suppliers whenever possible.</li>
+            </ul>
+
+            <h3>Proposed Location and Facility Details</h3>
+            <ul>
+                <li><strong>Location:</strong> Missoula, Montana.</li>
+                <li><strong>Facility:</strong> We are targeting a 4,500-5,500 square foot space. Key criteria include high visibility, ample parking, convenient proximity to hotels and business districts, and full compliance with all regulatory requirements, such as mandated distances from schools and churches.</li>
+            </ul>
+
+            <h3>Legal Structure</h3>
+            <ul>
+                <li><strong>Entity type:</strong> Limited Liability Company (LLC).</li>
+                <li><strong>Ownership:</strong> Managing member (5%), Investor member (95%).</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="market-analysis">
+        <div class="container">
+            <h2>Market Analysis</h2>
+            <h3>Target Market Demographics</h3>
+            <ul>
+                <li><strong>Primary Market:</strong> Local Missoula and surrounding area residents aged 25-65, characterized by disposable income and an appreciation for quality experiences.</li>
+                <li><strong>Secondary Market:</strong> Tourists visiting Montana, seeking authentic local experiences and entertainment.</li>
+                <li><strong>Tertiary Market:</strong> Business travelers and convention attendees looking for upscale leisure options.</li>
+            </ul>
+
+            <h3>Competition Analysis</h3>
+            <ul>
+                <li><strong>Direct Competitors:</strong> Existing traditional Montana bars that offer gaming, and more casino-focused establishments. Many of these competitors operate with dated facilities and offer limited craft beverage selections.</li>
+                <li><strong>Competitive Advantages:</strong> Big Sky Tavern & Gaming will differentiate itself through a superior ambiance, a meticulously curated craft beverage program, higher quality food offerings, and sophisticated, modern marketing strategies.</li>
+            </ul>
+             <div class="chart-container">
+                <canvas id="marketMetricsChart"></canvas>
+            </div>
+            <h3>Market Size and Trends</h3>
+            <ul>
+                <li>Montana’s gaming market currently generates approximately <strong>$360 million annually</strong>.</li>
+                <li>The state has demonstrated robust growth, with a <strong>9.6% population increase</strong> over the past decade.</li>
+                <li>Montana attracts a significant number of tourists, with <strong>12.5 million visitors annually</strong>.</li>
+                <li>The craft beverage market is expanding, with over 80 breweries in Montana and craft beer holding an <strong>18% market share</strong>.</li>
+            </ul>
+
+            <h3>Our Competitive Edge</h3>
+            <ul>
+                <li>A unique and inviting ambiance that stands apart from typical gaming venues.</li>
+                <li>An unmatched craft beverage program within the local gaming establishment scene.</li>
+                <li>Consistently higher food quality standards compared to competitors.</li>
+                <li>Advanced marketing techniques leveraging both digital platforms and effective traditional channels.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="marketing-strategy">
+        <div class="container">
+            <h2>Marketing and Sales Strategy</h2>
+            <h3>Marketing Channels and Methods</h3>
+            <ul>
+                <li><strong>Digital Marketing:</strong> Targeted Google Ads campaigns, engaging social media presence (Facebook, Instagram), email marketing to subscribers, and a dynamic website featuring real-time jackpot displays and event calendars.</li>
+                <li><strong>Traditional Marketing:</strong> Strategic radio partnerships with local stations, high-visibility billboards in key traffic areas, and direct mail campaigns to qualified zip codes.</li>
+            </ul>
+
+            <h3>Customer Acquisition Strategy</h3>
+            <ul>
+                <li><strong>Grand Opening Campaign:</strong> A dedicated budget of $25,000 for a multi-faceted launch, including exclusive soft openings for VIPs and media, attractive free play promotions, and partnerships with local media outlets for coverage.</li>
+                <li><strong>Ongoing Marketing:</strong> Sustained marketing efforts post-launch, utilizing a mix of the digital and traditional channels outlined above to maintain visibility and attract new customers.</li>
+            </ul>
+
+            <h3>Loyalty/Rewards Program</h3>
+            <ul>
+                <li><strong>Players Club:</strong> A tiered loyalty system (Bronze, Silver, Gold, Platinum) offering escalating benefits such as free play rewards, discounts on beverages, special birthday bonuses, and invitations to exclusive member-only events.</li>
+                <li><strong>Bar Rewards:</strong> A points-based system where customers earn points for every dollar spent on food and beverages. Points will be redeemable for food, drinks, branded merchandise, or converted to free play credits.</li>
+            </ul>
+
+            <h3>Events and Promotions</h3>
+            <p>A regular schedule of weekly events designed to draw diverse crowds and encourage repeat visits:</p>
+            <ul>
+                <li>Industry Night (discounts for hospitality workers)</li>
+                <li>Ladies Night specials</li>
+                <li>Trivia competitions</li>
+                <li>Craft Beer Feature nights (highlighting specific breweries or styles)</li>
+                <li>Live Music performances (e.g., acoustic sets)</li>
+                <li>Sports Specials during major games</li>
+            </ul>
+            <p><strong>Note:</strong> All promotions will be designed and executed in strict compliance with Montana Gaming Division rules and regulations, particularly concerning free alcohol and age verification.</p>
+        </div>
+    </section>
+
+    <section id="operations-plan">
+        <div class="container">
+            <h2>Operations Plan</h2>
+            <h3>Daily Operations Procedures</h3>
+            <ul>
+                <li><strong>Opening:</strong> Cash register reconciliation and float preparation, thorough testing of all gaming machines, inventory checks for bar and kitchen, pre-shift staff briefings.</li>
+                <li><strong>Shift Management:</strong> Hourly monitoring of gaming revenue, continuous beverage inventory tracking, adherence to customer service standards, and enforcement of security protocols.</li>
+                <li><strong>Closing:</strong> Secure lockdown of all gaming machines, comprehensive facility security checks, end-of-day financial reconciliation, and preparation for the next day's operations.</li>
+            </ul>
+
+            <h3>Staffing Requirements</h3>
+            <ul>
+                <li><strong>Management:</strong> General Manager, Staff/Shift Manager(s).</li>
+                <li><strong>Service Staff:</strong> Approximately 10 employees, including skilled bartenders, attentive servers, and professional security personnel.</li>
+                <li><strong>Total Labor Costs:</strong> Projected to be 28-30% of revenue.</li>
+            </ul>
+
+            <h3>Security Measures</h3>
+            <ul>
+                <li><strong>Cash Handling:</strong> Strict drop procedures conducted every 4 hours, use of a secure counting room with limited access, and daily armored car deposits.</li>
+                <li><strong>Surveillance:</strong> 100% camera coverage of the gaming floor, cash points, entrances, and exits, with all footage retained for a minimum of 30 days.</li>
+                <li><strong>Access Control:</strong> Implementation of a key card system for restricted access to sensitive areas like offices, storage, and the cash counting room.</li>
+            </ul>
+
+            <h3>Technology Systems</h3>
+            <ul>
+                <li><strong>Gaming Systems:</strong> State-compliant Central Monitoring System (CMS), Player Tracking System (PTS) for loyalty programs, and integrated security camera network.</li>
+                <li><strong>Bar Operations:</strong> Modern Point of Sale (POS) system, robust inventory management software, staff scheduling software, and integration with accounting systems.</li>
+            </ul>
+            
+            <h3>Supplier Relationships</h3>
+            <p>Key suppliers will include:</p>
+            <ul>
+                <li><strong>Food & Beverage Distributors:</strong> Companies like Cisco for broadline supplies.</li>
+                <li><strong>Local Producers:</strong> Direct sourcing from local Farmer's Markets and individual Montana farms for fresh, seasonal ingredients.</li>
+                <li><strong>Craft Breweries & Distilleries:</strong> Establishing direct relationships with Montana-based beverage producers.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="management-team">
+        <div class="container">
+            <h2>Management Team & Advisors</h2>
+            <h3>Key Team Members & Projected Salaries</h3>
+            <ul>
+                <li><strong>General Manager:</strong> $60,000/year</li>
+                <li><strong>Staff Manager:</strong> $45,000/year</li>
+                <li><strong>Head Chef:</strong> $50,000/year</li>
+                <li><strong>Line Cook:</strong> $32,000/year (or competitive hourly)</li>
+                <li><strong>Server:</strong> $15/hr + tips</li>
+                <li><strong>Bartender:</strong> $15/hr + tips</li>
+                <li><strong>Host/Hostess:</strong> $20/hr</li>
+            </ul>
+            <p><em>Note: Salaries and hourly rates are indicative and subject to market conditions.</em></p>
+
+            <h3>Advisory Board</h3>
+            <p>An advisory board will be established (Members TBD).</p>
+
+            <h3>Professional Service Providers</h3>
+            <ul>
+                <li><strong>Accounting:</strong> Reputable CPA firm.</li>
+                <li><strong>Legal Counsel:</strong> Legal firm specializing in Montana gaming/liquor licensing.</li>
+                <li><strong>Security Services:</strong> Professional security company for facility protection and cash transport.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="licensing">
+        <div class="container">
+            <h2>Licensing & Regulatory Requirements</h2>
+            <p>Navigating Montana's regulatory landscape is critical. Below is a summary of key licenses and requirements.</p>
+            
+            <h3>Gaming License Requirements</h3>
+            <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>60-90 days</td></tr>
+                    <tr><td>Estimated Cost</td><td>$1,000 application fee + $450 annual fee</td></tr>
+                    <tr><td>Key Considerations</td><td>Operator license required. Direct ownership recommended.</td></tr>
+                    <tr><td>Required Documentation</td><td>Application, FBI fingerprint check, financial history, proof of financial stability, $50,000 bond, source of funds documentation.</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Liquor License Requirements</h3>
+            <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>60-90 days (post-identification)</td></tr>
+                    <tr><td>Estimated Cost</td><td>~$450,000 - $650,000 (market value for transfer) + $400 annual renewal.</td></tr>
+                    <tr><td>Key Considerations</td><td>All-beverage license required. Quota system limits availability.</td></tr>
+                    <tr><td>Required Documentation</td><td>Transfer application, Dept. of Revenue approval, due diligence verification.</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Local Permits Needed</h3>
+             <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>1-2 months</td></tr>
+                    <tr><td>Estimated Cost</td><td>$500 - $2,000</td></tr>
+                    <tr><td>Key Considerations</td><td>Compliance with local zoning and health codes.</td></tr>
+                    <tr><td>Required Documentation</td><td>Business license, health permits, fire dept. approval, building permits, signage permits.</td></tr>
+                </tbody>
+            </table>
+            
+            <h3>Background Check Requirements</h3>
+             <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>30-60 days</td></tr>
+                    <tr><td>Estimated Cost</td><td>$100 - $500 per individual</td></tr>
+                    <tr><td>Required Documentation</td><td>FBI fingerprint check, financial history, regulatory history.</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Compliance Requirements</h3>
+             <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>Ongoing</td></tr>
+                    <tr><td>Estimated Cost</td><td>$1,000 - $5,000 annually</td></tr>
+                    <tr><td>Key Considerations</td><td>Regular inspections and training critical.</td></tr>
+                    <tr><td>Required Documentation</td><td>Training certificates, inspection reports, detailed records.</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Insurance Requirements</h3>
+             <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>1 month</td></tr>
+                    <tr><td>Estimated Cost</td><td>$4,000 - $10,000 annually</td></tr>
+                    <tr><td>Key Considerations</td><td>Coverage for liability, property, gaming ops required.</td></tr>
+                    <tr><td>Required Documentation</td><td>Insurance policies.</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Jurisdiction-Specific Considerations</h3>
+            <ul>
+                <li><strong>Liquor License Quota:</strong> Cost $450,000 - $650,000 via transfer.</li>
+                <li><strong>Location Restrictions:</strong> Must be located away from schools/churches.</li>
+                <li><strong>Gaming Tax:</strong> 15% state tax on gross machine income. Quarterly filings.</li>
+                <li><strong>Promotion Compliance:</strong> Adhere to Montana Gaming Division rules (no free alcohol to active gamers, strict age verification).</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="facility-setup">
+        <div class="container">
+            <h2>Facility Setup Checklist</h2>
+            <p>Details for establishing the physical premises.</p>
+
+            <h3>Location Selection Criteria</h3>
+            <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>1-2 months</td></tr>
+                    <tr><td>Estimated Cost Range</td><td>$24,000 (lease deposits)</td></tr>
+                    <tr><td>Key Considerations</td><td>High visibility, ample parking, proximity to hotels/business districts, away from schools/churches.</td></tr>
+                    <tr><td>Required Documentation</td><td>Lease agreement, location analysis report.</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Building Requirements & Leasehold Improvements</h3>
+            <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>2-3 months</td></tr>
+                    <tr><td>Estimated Cost Range</td><td>$30,000+ (leasehold improvements)</td></tr>
+                    <tr><td>Key Considerations</td><td>4,500-5,500 sq ft. Modern Montana lodge aesthetic. Dedicated gaming area.</td></tr>
+                    <tr><td>Required Documentation</td><td>Building permits, architectural plans.</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Gaming Equipment Procurement</h3>
+             <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>1-2 months</td></tr>
+                    <tr><td>Estimated Cost Range</td><td>~$108,000 ($80k machines + $13k CMS + $15k PTS).</td></tr>
+                    <tr><td>Key Considerations</td><td>20 video poker/slot machines, regulatory compliance, PTS, CMS.</td></tr>
+                    <tr><td>Required Documentation</td><td>Vendor quotes, purchase agreements, compliance certs.</td></tr>
+                </tbody>
+            </table>
+            
+            <h3>Security System Setup</h3>
+             <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>1 month</td></tr>
+                    <tr><td>Estimated Cost Range</td><td>~$10,000 ($5k cameras + $5k safe/access).</td></tr>
+                    <tr><td>Key Considerations</td><td>100% gaming floor coverage, 30-day retention, secure cash handling.</td></tr>
+                    <tr><td>Required Documentation</td><td>Installation contracts, compliance certs.</td></tr>
+                </tbody>
+            </table>
+
+            <h3>POS/Management Systems</h3>
+             <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>1 month</td></tr>
+                    <tr><td>Estimated Cost Range</td><td>$0 (if self-built via Stripe API). Commercial: $5k-$15k+.</td></tr>
+                    <tr><td>Key Considerations</td><td>Integration with gaming and bar ops. Stripe API requires dev resources.</td></tr>
+                    <tr><td>Required Documentation</td><td>(Self-built) Dev plan. (Commercial) Vendor proposals, licenses.</td></tr>
+                </tbody>
+            </table>
+            
+            <h3>Interior Design/Layout</h3>
+            <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>2-3 months</td></tr>
+                    <tr><td>Estimated Cost Range</td><td>$0 (if internal). Pro design: $5k-$20k+. FF&E separate.</td></tr>
+                    <tr><td>Key Considerations</td><td>Capacity for 120 patrons, gaming/bar separation, lodge aesthetic.</td></tr>
+                    <tr><td>Required Documentation</td><td>Design plans, FF&E list, contractor agreements.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+     <section id="operational-setup">
+        <div class="container">
+            <h2>Operational Setup Checklist</h2>
+            <p>Steps for launch readiness and smooth daily functioning.</p>
+
+            <h3>Staffing Plan & Hiring</h3>
+            <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>1-2 months (pre-opening)</td></tr>
+                    <tr><td>Estimated Cost Range</td><td>Hiring/training costs (TBD). Labor: 28-30% of revenue.</td></tr>
+                    <tr><td>Key Considerations</td><td>Recruit ~10 core staff. Focus on experience, customer service.</td></tr>
+                    <tr><td>Required Documentation</td><td>Job descriptions, contracts, payroll setup.</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Training Programs</h3>
+            <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>1 month (initial) + ongoing.</td></tr>
+                    <tr><td>Estimated Cost Range</td><td>$2,000 (initial materials/time).</td></tr>
+                    <tr><td>Key Considerations</td><td>40-hr initial training (policies, service, POS, gaming, security). Monthly updates.</td></tr>
+                    <tr><td>Required Documentation</td><td>Training manuals, certification records.</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Vendor Relationships & Initial Inventory</h3>
+            <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>1-2 months</td></tr>
+                    <tr><td>Estimated Cost Range</td><td>$0 (relationships). Initial F&B inventory: $15k-$30k.</td></tr>
+                    <tr><td>Key Considerations</td><td>Secure reliable local/national suppliers. Negotiate terms. Local sourcing focus.</td></tr>
+                    <tr><td>Required Documentation</td><td>Supplier contracts, P.O.s, inventory tracking.</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Banking Relationships</h3>
+            <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>1 month</td></tr>
+                    <tr><td>Estimated Cost Range</td><td>Minimal (bank fees). Armored car separate.</td></tr>
+                    <tr><td>Key Considerations</td><td>Business accounts, daily deposit procedures, armored car service.</td></tr>
+                    <tr><td>Required Documentation</td><td>Bank agreements, armored car contract.</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Marketing Launch Plan Execution</h3>
+            <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>2-3 months pre-launch.</td></tr>
+                    <tr><td>Estimated Cost Range</td><td>$25,000 (grand opening).</td></tr>
+                    <tr><td>Key Considerations</td><td>Coordinate digital, PR, VIP events, promos. Critical for momentum.</td></tr>
+                    <tr><td>Required Documentation</td><td>Marketing budget, campaign plans, event plans.</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Standard Operating Procedures (SOPs) Development</h3>
+            <table>
+                <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+                <tbody>
+                    <tr><td>Estimated Timeline</td><td>1 month (drafting/finalization)</td></tr>
+                    <tr><td>Estimated Cost Range</td><td>$0 (if internal). Consultant fees if outsourced.</td></tr>
+                    <tr><td>Key Considerations</td><td>Comprehensive SOP manual (all ops, security, compliance).</td></tr>
+                    <tr><td>Required Documentation</td><td>SOP manual, staff training acknowledgments.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        const options = {
+            rootMargin: '0px',
+            threshold: 0.10 
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    // entry.target.classList.remove('visible');
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = document.querySelector('header').offsetHeight + 20;
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerOffset;
+                
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const commonChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { 
+                            color: '#e0e0e0', 
+                            font: { size: 10 }
+                        },
+                        grid: { color: 'rgba(255,255,255,0.1)' } 
+                    },
+                    x: {
+                        ticks: { 
+                            color: '#e0e0e0', 
+                            font: { size: 10 }
+                        },
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: { 
+                            color: '#e0e0e0', 
+                            font: { size: 11 }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        color: '#00d4ff', 
+                        font: { size: 16, weight: 'bold' }
+                    }
+                }
+            };
+            
+            const financialCtx = document.getElementById('financialProjectionsChart');
+            if (financialCtx) {
+                new Chart(financialCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Initial Investment', 'Year 1 Revenue', 'Year 3 Revenue'],
+                        datasets: [{
+                            label: 'USD ($)',
+                            data: [1100000, 1425000, 2100000],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.6)', 
+                                'rgba(54, 162, 235, 0.6)',
+                                'rgba(75, 192, 192, 0.6)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(75, 192, 192, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        ...commonChartOptions, 
+                        scales: { 
+                             ...commonChartOptions.scales,
+                             y: {
+                                ...commonChartOptions.scales.y,
+                                ticks: {
+                                    ...commonChartOptions.scales.y.ticks,
+                                    callback: function(value) {
+                                        return '$' + value.toLocaleString();
+                                    }
+                                }
+                             }
+                        },
+                        plugins: {
+                            ...commonChartOptions.plugins,
+                            legend: { display: false }, 
+                            title: { ...commonChartOptions.plugins.title, text: 'Financial Projections Overview' }
+                        }
+                    }
+                });
+            }
+
+            const marketCtx = document.getElementById('marketMetricsChart');
+            if (marketCtx) {
+                 new Chart(marketCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['MT Gaming Market ($M)', 'Annual Tourists (M)', 'MT Pop. Growth (%)', 'Craft Beer Share (%)'],
+                        datasets: [{
+                            data: [360, 12.5, 9.6, 18],
+                            backgroundColor: [
+                                'rgba(0, 212, 255, 0.7)', 
+                                'rgba(0, 163, 255, 0.7)',
+                                'rgba(121, 224, 255, 0.7)',
+                                'rgba(20, 100, 180, 0.7)' 
+                            ],
+                            borderColor: [
+                                'rgba(0, 212, 255, 1)',
+                                'rgba(0, 163, 255, 1)',
+                                'rgba(121, 224, 255, 1)',
+                                'rgba(20, 100, 180, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        ...commonChartOptions, 
+                        plugins: {
+                            ...commonChartOptions.plugins,
+                            legend: { 
+                                ...commonChartOptions.plugins.legend,
+                                position: 'bottom' 
+                            },
+                            title: { ...commonChartOptions.plugins.title, text: 'Key Market Indicators' },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) { label += ': '; }
+                                        if (context.parsed !== null) {
+                                            if (context.label.includes('($M)')) { label += '$' + context.raw.toLocaleString() + 'M';}
+                                            else if (context.label.includes('(M)')) { label += context.raw.toLocaleString() + 'M'; }
+                                            else { label += context.raw + '%'; }
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
